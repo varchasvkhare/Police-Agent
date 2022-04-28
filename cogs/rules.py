@@ -51,6 +51,15 @@ class Rules(commands.Cog):
                 **9・Alternate Accounts**
                 Inviting alternative accounts / using alternative accounts in the server is against our rules.
                 Punishment - Warn/Ban
+                
+                **10・Begging**
+                Begging is strictly prohibited in this server. This also includes bot currency/nitro.
+                Punishment - Warn/Mute
+                
+                **11・Advertisement**
+                Advertisements of any kinds is not allowed in this server outside of #self-advertise and Partnerships.
+                Punishment - Warn/Mute
+                
                 """
             ),
             color=0x797EF6
