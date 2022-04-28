@@ -9,7 +9,7 @@ import discord
 from discord.ext import commands, tasks
 import asyncpg
 
-my_secret = os.environ['TOKEN']
+CLIENT_TOKEN="OTE5MTQ5MDMzODIwNDE4MDU5.YbRmPg.rJRCJeOAicRK6vtvbs2jq43tmZA"
 
 class Client(commands.Bot):
     def __init__(self):
@@ -61,7 +61,7 @@ class Client(commands.Bot):
         
     async def start(self):
         await super().start(
-            token=os.getenv("TOKEN"),
+            token=CLIENT_TOKEN,
             reconnect=True
         )
 
