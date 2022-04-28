@@ -14,8 +14,9 @@ class Verify(commands.Cog):
         class ViewWithButton(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.green, label='Verify')
             async def click_me_button(self, button: discord.ui.Button, interaction: discord.Interaction):
-                await interaction.user.add_roles(903238068910309398)
-        
+                member = interaction.guild.get_member(interaction.user.id)
+                await member.add_role(903238068910309398)
+                await interaction.response.send_message('I have give you access to the server!', ephemeral=True)
         embed = discord.Embed(
             title=f'Server Verification',
             description=inspect.cleandoc(
