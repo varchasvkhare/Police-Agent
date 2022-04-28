@@ -1,1 +1,1 @@
-import discord
+qimport discord
