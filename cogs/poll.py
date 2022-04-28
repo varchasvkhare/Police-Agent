@@ -1,3 +1,4 @@
+from ast import Or
 import inspect
 
 import discord
@@ -10,7 +11,10 @@ class Poll(commands.Cog):
     @commands.command(
         name="poll"
     )
-    @commands.has_any_role(commands.has_permissions(administrator=True), 917120712840462416)
+    @commands.check_any(
+        commands.has_any_role(917120712840462416),
+        commands.has_permissions(administrator=True)
+    )
     async def poll(self, ctx: commands.Context, *, message) -> None:
         """Allows you to make a poll"""
         
@@ -19,7 +23,9 @@ class Poll(commands.Cog):
             description=f'{message}', color=0x797EF6
         )
         embed.set_footer(text='react with any one option')
-        await ctx.send(embed=embed)
+        message = await ctx.channel.send(embed=embed)
+        await message.add_reaction('👍')
+        await message.add_reaction('👎')
         
 async def setup(bot):
     await bot.add_cog(Poll(bot))
