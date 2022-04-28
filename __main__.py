@@ -42,7 +42,7 @@ class Bot(commands.Bot):
     async def _before_change_status(self):
         await self.wait_until_ready()
 
-    async def _startup_task(self):
+    async def startup_task(self):
         print(f'Logged in as {self.user} (ID: {self.user.id})')
         print('------')
 
