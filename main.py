@@ -14,7 +14,7 @@ my_secret = os.environ['TOKEN']
 class Client(commands.Bot):
     def __init__(self):
         super().__init__(
-            command_prefix=_"-",
+            command_prefix="-",
             intents=discord.Intents.all(),
             case_insensitive=True,
             strip_after_prefix=True,
