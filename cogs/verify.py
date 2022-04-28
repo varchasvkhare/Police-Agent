@@ -12,9 +12,9 @@ class Verify(commands.Cog):
     async def verify(self, ctx: commands.Context) -> None:
         """Server Verification"""
         class ViewWithButton(discord.ui.View):
-            @discord.ui.button(style=discord.ButtonStyle.blurple, label='Verify')
+            @discord.ui.button(style=discord.ButtonStyle.green, label='Verify')
             async def click_me_button(self, button: discord.ui.Button, interaction: discord.Interaction):
-                await ctx.add_roles(ctx, 903238068910309398)
+                await interaction.user.add_roles(903238068910309398)
         
         embed = discord.Embed(
             title=f'Server Verification',
