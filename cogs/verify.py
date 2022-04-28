@@ -4,13 +4,13 @@ import inspect
 import discord
 from discord.ext import commands
 
-class Rules(commands.Cog):
+class Verify(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
     @commands.command(name="verify")
-    async def rules(self, ctx: commands.Context) -> None:
-        """Some Server Rules"""
+    async def verify(self, ctx: commands.Context) -> None:
+        """Server Verification"""
         class ViewWithButton(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.blurple, label='Verify')
             async def click_me_button(self, button: discord.ui.Button, interaction: discord.Interaction):
@@ -29,5 +29,5 @@ class Rules(commands.Cog):
         await ctx.send(embed=embed, view=ViewWithButton())
         
 async def setup(bot):
-    await bot.add_cog(Rules(bot))
+    await bot.add_cog(Verify(bot))
 
