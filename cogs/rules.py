@@ -8,7 +8,7 @@ class Rules(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.group(invoke_without_command=True, name="rules")
+    @commands.command(name="rules")
     async def rules(self, ctx: commands.Context) -> None:
         """Some Server Rules"""
         
