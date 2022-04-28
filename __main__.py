@@ -113,8 +113,8 @@ class Bot(commands.AutoShardedBot):
         else:
             print('Database connected.')
 
-        #await self.db.execute('CREATE TABLE IF NOT EXISTS prefixes (guild_id BIGINT, prefix TEXT)')
-        await self.db.execute('CREATE TABLE IF NOT EXISTS blacklist (user_id BIGINT, user TEXT)')
+        await self.db.execute('CREATE TABLE IF NOT EXISTS prefixes (guild_id BIGINT, prefix TEXT)')
+        await self.db.execute('CREATE TABLE IF NOT EXISTS blacklist (user_id BIGINT)')
 
     async def setup_hook(self):
         asyncio.create_task(self._startup_task())
