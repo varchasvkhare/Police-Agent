@@ -9,7 +9,7 @@ class Rules(commands.Cog):
         self.bot = bot
     
     @commands.group(invoke_without_command=True, name="rules")
-    async def poll(self, ctx: commands.Context, *, message) -> None:
+    async def rules(self, ctx: commands.Context) -> None:
         """Some Server Rules"""
         
         embed = discord.Embed(
@@ -55,6 +55,7 @@ class Rules(commands.Cog):
             ),
             color=0x797EF6
         )
+        await ctx.send(embed=embed)
         
 async def setup(bot):
     await bot.add_cog(Rules(bot))
