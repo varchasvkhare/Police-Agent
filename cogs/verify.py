@@ -20,7 +20,7 @@ class Verify(commands.Cog):
             title=f'Server Verification',
             description=inspect.cleandoc(
                 f"""
-                
+                x
                 
                 """
             ),
