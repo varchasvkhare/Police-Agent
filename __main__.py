@@ -9,18 +9,23 @@ import discord
 from discord.ext import commands, tasks
 import asyncpg
 
-CLIENT_TOKEN="OTE5MTQ5MDMzODIwNDE4MDU5.YbRmPg.rJRCJeOAicRK6vtvbs2jq43tmZA"
+BOT_TOKEN="OTE5MTQ5MDMzODIwNDE4MDU5.YbRmPg.rJRCJeOAicRK6vtvbs2jq43tmZA"
 
-class Client(commands.Bot):
+os.environ['JISHAKU_HIDE'] = 'True'
+os.environ['JISHAKU_NO_UNDERSCORE'] = 'True'
+os.environ['JISHAKU_FORCE_PAGINATOR'] = 'True'
+os.environ['JISHAKU_NO_DM_TRACEBACK'] = 'True'
+
+class Bot(commands.Bot):
     def __init__(self):
         super().__init__(
-            command_prefix="-",
+            command_prefix='-',
             intents=discord.Intents.all(),
             case_insensitive=True,
             strip_after_prefix=True,
             owner_ids=[
-                868465221373665351, #khare
-                748552378504052878  #pandey
+                868465221373665351,
+                748552378504052878 # pandey
             ]
         )
     
@@ -29,7 +34,7 @@ class Client(commands.Bot):
         await self.change_presence(
             activity=discord.Activity(
                 type=discord.ActivityType.playing,
-                name=f'-help in Detective Hub'
+                name=f'-help'
             )
         )
 
@@ -58,14 +63,13 @@ class Client(commands.Bot):
                 traceback.print_exc()
 
         self.change_status.start()
-        
+    
     async def start(self):
         await super().start(
-            token=CLIENT_TOKEN,
+            token=BOT_TOKEN,
             reconnect=True
         )
 
 if __name__ == '__main__':
-    bot = Client()
+    bot = Bot()
     bot.run()
-
