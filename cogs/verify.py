@@ -19,7 +19,7 @@ class Verify(commands.Cog):
                     await interaction.response.send_message('Verification Successfull', ephemeral=True)
         
         embed = discord.Embed(
-            Title = "Verification",
+            title = "Verification",
             description = inspect.cleandoc(
                 f"""
                 
