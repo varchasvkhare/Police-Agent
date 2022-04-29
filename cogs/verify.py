@@ -13,9 +13,9 @@ class Verify(commands.Cog):
         """Server Verification"""
         class ViewWithButton(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.green, label='Verify')
-            async def click_me_button(self, button: discord.ui.Button, interaction: discord.Interaction):
+            async def click_me_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+                await interaction.response.send_message('Enjoy!', view=ViewWithButton(), ephemeral=True)
                 
-                await interaction.response.send_message('I have give you access to the server!', ephemeral=True)
         embed = discord.Embed(
             title=f'Server Verification',
             description=inspect.cleandoc(
