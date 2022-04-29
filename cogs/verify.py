@@ -14,8 +14,10 @@ class Verify(commands.Cog):
         class ViewWithButton(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.green, label='Verify')
             async def click_me_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+                member = interaction.user.id
                 await interaction.response.send_message('Enjoy!', ephemeral=True)
-                await interaction.user.add_roles(903238068910309398)
+                await interaction.user.add_roles(760134264242700320, member, 903238068910309398, reason="Pressed the verification button")
+                
                 
         embed = discord.Embed(
             title=f'Server Verification',
