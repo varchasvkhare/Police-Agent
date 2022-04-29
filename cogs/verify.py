@@ -11,23 +11,22 @@ class Verify(commands.Cog):
     @commands.command(name="verify")
     async def verify(self, ctx: commands.Context) -> None:
         """Server Verification"""
-        class ViewWithButton(discord.ui.View):
-            @discord.ui.button(style=discord.ButtonStyle.green, label='Verify')
-            async def click_me_button(self, button: discord.ui.Button, interaction: discord.Interaction):
-                member = interaction.guild.get_member(interaction.user.id)
-                await member.add_role(903238068910309398)
-                await interaction.response.send_message('I have give you access to the server!', ephemeral=True)
+        class Verifiction(discord.ui.View):
+            def __init__(self):
+                super().__init__(timeout=None)
+                @discord.ui.button(label='Verify', style=discord.ButtonStyle.green, custom_id='verify')
+                async def green(self, interaction: discord.Interaction, button: discord.ui.Button):
+                    await interaction.response.send_message('Verification Successfull', ephemeral=True)
+        
         embed = discord.Embed(
-            title=f'Server Verification',
-            description=inspect.cleandoc(
+            Title = "Verification",
+            description = inspect.cleandoc(
                 f"""
-                x
                 
                 """
-            ),
-            color=0x797EF6
+            )
         )
-        await ctx.send(embed=embed, view=ViewWithButton())
+        await ctx.send(embed=embed, view=Verifiction)
         
 async def setup(bot):
     await bot.add_cog(Verify(bot))
