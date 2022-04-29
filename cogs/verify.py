@@ -14,7 +14,7 @@ class Verify(commands.Cog):
         class ViewWithButton(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.green, label='Verify')
             async def click_me_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-                role = discord.utils.get(self.bot.get_guild(ctx.guild.id).roles, id ="903238068910309398")
+                role = discord.utils.get(self.bot.get_guild(760134264242700320).roles, id ="903238068910309398")
                 await interaction.response.send_message('Enjoy!', ephemeral=True)
                 await interaction.user.add_roles(903238068910309398, reason="Pressed the verification button")
                 
