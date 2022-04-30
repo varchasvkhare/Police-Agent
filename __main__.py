@@ -84,12 +84,18 @@ class Bot(commands.AutoShardedBot):
             activity=discord.Activity(
                 type=discord.ActivityType.playing,
                 name=f'-help'
-            ),
+            )
+        )
+        await asyncio.sleep(60)
+        await self.change_presence(
             activity1=discord.Activity(
                 type=discord.ActivityType.streaming,
                 name='Detective Hub on Pom Hub',
                 url='https://www.twitch.tv/varchasvkhare'
-            ),
+            )
+        )
+        await asyncio.sleep(60)
+        await self.change_presence(
             activity2=discord.Activity(
                 type=discord.ActivityType.watching,
                 name='pandey watching pom'
