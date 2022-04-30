@@ -15,10 +15,10 @@ class Ticket(commands.Cog):
         
         class Ticket(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify')
-            async def click_me_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+            async def ticket_create_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 mod=discord.utils.get(ctx.guild.roles, name="Moderation Team")
                 await interaction.guild.create_text_channel(
-                    category=903238081983967273,
+                    category='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼',
                     name=f"Ticket {interaction.user.id}",
                     overwrites={
                         interaction.guild.default_role: discord.PermissionOverwrite(view_channel=False),
