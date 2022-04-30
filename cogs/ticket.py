@@ -11,6 +11,9 @@ class Ticket(commands.Cog):
         self.bot = bot
     
     @commands.command(name="ticket")
+    @commands.check_any(
+        commands.has_permissions(administrator=True)
+    )
     async def ticket(self, ctx: commands.Context) -> None:
         """ticket"""
         
