@@ -35,10 +35,18 @@ class Ticket(commands.Cog):
             title=f'Create a Ticket',
             description=inspect.cleandoc(
                 f"""
+                • Write your issue as soon as you open a ticket instead of waiting for a mod to ping you.
+                • Don't open a ticket for no reason
+                • Don't open a ticket without typing your query and not respond.
+                • Don't DM or Ping mods when they do not respond instantaneously.
                 
+                To Create a Ticket press the button below
                 """
             ),
             color=0x111111
+        )
+        embed.set_footer(
+            text='Opening tickets for trolling or for no purpose might get you punished, punishments include mute, warn and ban.'
         )
         await ctx.send(embed=embed, view=Ticket())
         

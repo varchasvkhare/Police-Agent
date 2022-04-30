@@ -15,7 +15,7 @@ class Verify(commands.Cog):
     )
     async def verify(self, ctx: commands.Context) -> None:
         """Server Verification"""
-        class ViewWithButton(discord.ui.View):
+        class Verify(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify')
             async def verification_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 verified=discord.utils.get(ctx.guild.roles, name="[0] Verified")
@@ -34,7 +34,7 @@ class Verify(commands.Cog):
             ),
             color=0x111111
         )
-        await ctx.send(embed=embed, view=ViewWithButton())
+        await ctx.send(embed=embed, view=Verify())
         
 async def setup(bot):
     await bot.add_cog(Verify(bot))

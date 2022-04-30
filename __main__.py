@@ -26,7 +26,25 @@ async def _prefix_callable(bot: commands.AutoShardedBot, message: discord.Messag
     
     return base
 
-class ViewWithButton(discord.ui.View):
+class Ticket(discord.ui.View):
+            @discord.ui.button(style=discord.ButtonStyle.green, label='Create a Ticket', custom_id='ticket')
+            async def ticket_create_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+                category = discord.utils.get(interaction.guild.categories, name='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼')
+                mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
+                
+                ticket = await interaction.guild.create_text_channel(
+                    category=category,
+                    name=f"Ticket-{interaction.user.id}",
+                    overwrites={
+                        interaction.guild.default_role: discord.PermissionOverwrite(view_channel=False),
+                        interaction.user: discord.PermissionOverwrite(view_channel=True),
+                        mod: discord.PermissionOverwrite(view_channel=True)
+                    }
+                )
+                
+                await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
+
+class Verify(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
     @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify')
@@ -143,7 +161,8 @@ class Bot(commands.AutoShardedBot):
     async def setup_hook(self) -> None:
         asyncio.create_task(self._startup_task())
         await self._create_pool()
-        self.add_view(ViewWithButton())
+        self.add_view(Verify())
+        self.add_view(Ticket())
         
     async def start(self):
         await super().start(
