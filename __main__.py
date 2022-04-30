@@ -26,6 +26,15 @@ async def _prefix_callable(bot: commands.AutoShardedBot, message: discord.Messag
     
     return base
 
+class ViewWithButton(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+    @discord.ui.button(style=discord.ButtonStyle.green, label='Verify')
+    async def click_me_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        verified=discord.utils.get(ctx.guild.roles, name="[0] Verified")
+        await interaction.response.send_message('I have give you access to the server!', ephemeral=True)
+        await interaction.user.add_roles(verified)
+
 os.environ['JISHAKU_HIDE'] = 'True'
 os.environ['JISHAKU_NO_UNDERSCORE'] = 'True'
 os.environ['JISHAKU_FORCE_PAGINATOR'] = 'True'
@@ -116,10 +125,11 @@ class Bot(commands.AutoShardedBot):
         await self.db.execute('CREATE TABLE IF NOT EXISTS prefixes (guild_id BIGINT, prefix TEXT)')
         await self.db.execute('CREATE TABLE IF NOT EXISTS blacklist (user_id BIGINT)')
 
-    async def setup_hook(self):
+    async def setup_hook(self) -> None:
         asyncio.create_task(self._startup_task())
         await self._create_pool()
-    
+        self.add_view(ViewWithButton())
+        
     async def start(self):
         await super().start(
             token=BOT_TOKEN,
