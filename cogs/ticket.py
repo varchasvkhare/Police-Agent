@@ -28,8 +28,9 @@ class Ticket(commands.Cog):
                         mod: discord.PermissionOverwrite(view_channel=True)
                     }
                 )
-                #ticket_name=discord.utils.get(ctx.guild.channels, f"Ticket-{interaction.user.id}")
-                await interaction.response.send_message(f'e ', ephemeral=True)
+                
+                ticket = await interaction.response.send_message(f'e ', ephemeral=True)
+                await ticket.send(interaction.user.mention)
         
         embed = discord.Embed(
             title=f'Create a Ticket',
