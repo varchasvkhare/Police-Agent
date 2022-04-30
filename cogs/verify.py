@@ -23,11 +23,12 @@ class Verify(commands.Cog):
             title=f'Server Verification',
             description=inspect.cleandoc(
                 f"""
-                x
+                If you have successfully read the above rules then click the button below to get verified.
+                In case if the button is not working open a ticken in <#969952359407030322>
                 
                 """
             ),
-            color=0x797EF6
+            color=0x111111
         )
         await ctx.send(embed=embed, view=ViewWithButton())
         

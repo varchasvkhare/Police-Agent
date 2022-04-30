@@ -62,7 +62,7 @@ class Rules(commands.Cog):
                 
                 """
             ),
-            color=0x797EF6
+            color=0x111111
         )
         await ctx.send(embed=embed)
         
