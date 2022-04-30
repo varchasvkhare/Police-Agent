@@ -36,14 +36,29 @@ class Ticket(discord.ui.View):
                 
         ticket = await interaction.guild.create_text_channel(
             category=category,
-            name=f"Ticket-{interaction.user.id}",
+            topic=interaction.user.id,
+            name=f"Ticket-{interaction.user.name}",
             overwrites={
                 interaction.guild.default_role: discord.PermissionOverwrite(view_channel=False),
                 interaction.user: discord.PermissionOverwrite(view_channel=True),
                 mod: discord.PermissionOverwrite(view_channel=True)
             }
         )
-                
+        embed = discord.Embed(
+            description=inspect.cleandoc(
+                """
+                • Type your issue as soon as possible
+                • You can ping any online mod if no one responds in 10 minutes
+                """
+            )
+        )
+        class TicketClose(discord.ui.View):
+            @discord.ui.button(style=discord.ButtonStyle.blurple, label='Close', custom_id='ticket_close')
+            async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+                await interaction.response.send_message("This ticket will be deleted in 5 seconds")
+                await asyncio.sleep(5)
+                await ticket.delete()
+        await ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
         await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
 
 class Verify(discord.ui.View):
