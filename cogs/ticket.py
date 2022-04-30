@@ -46,7 +46,7 @@ class Ticket(commands.Cog):
                             await asyncio.sleep(5)
                             await ticket.delete()
                         else:
-                            await interaction.response.send_message("You Don't have the permissions to do this")
+                            await interaction.response.send_message("You Don't have the permissions to do this", ephemeral=True)
                 await ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
                 await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
         
