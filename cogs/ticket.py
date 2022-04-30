@@ -28,7 +28,7 @@ class Ticket(commands.Cog):
                         mod: discord.PermissionOverwrite(view_channel=True)
                     }
                 )
-                
+                await ticket.send(f'{interaction.user.mention}')
                 await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
         
         embed = discord.Embed(
