@@ -161,8 +161,7 @@ class Bot(commands.AutoShardedBot):
     async def setup_hook(self) -> None:
         asyncio.create_task(self._startup_task())
         await self._create_pool()
-        self.add_view(Verify())
-        self.add_view(Ticket())
+        self.add_view(Verify(), Ticket())
         
     async def start(self):
         await super().start(
