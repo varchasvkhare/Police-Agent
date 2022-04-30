@@ -50,7 +50,7 @@ class Bot(commands.AutoShardedBot):
             strip_after_prefix=True,
             owner_ids=[
                 868465221373665351,
-                714731543309844561 # invalid
+                748552378504052878 # pandey
             ]
         )
 
@@ -83,7 +83,16 @@ class Bot(commands.AutoShardedBot):
         await self.change_presence(
             activity=discord.Activity(
                 type=discord.ActivityType.playing,
-                name=f'd/help | {str(len(self.guilds))} servers'
+                name=f'-help'
+            ),
+            activity=discord.Activity(
+                type=discord.ActivityType.streaming,
+                name='Detective Hub on Pom Hub',
+                url='https://www.twitch.tv/varchasvkhare'
+            ),
+            activity=discord.Activity(
+                type=discord.ActivityType.watching,
+                name='pandey watching pom'
             )
         )
 
