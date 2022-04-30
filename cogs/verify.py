@@ -9,6 +9,10 @@ class Verify(commands.Cog):
         self.bot = bot
     
     @commands.command(name="verify")
+    @commands.check_any(
+        commands.has_any_role(903238046323998720),
+        commands.has_permissions(administrator=True)
+    )
     async def verify(self, ctx: commands.Context) -> None:
         """Server Verification"""
         class ViewWithButton(discord.ui.View):
