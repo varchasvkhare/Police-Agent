@@ -29,8 +29,8 @@ class Ticket(commands.Cog):
                     }
                 )
                 
-                ticket = await interaction.response.send_message(f'e ', ephemeral=True)
-                await ticket.send(interaction.user.mention)
+                ticket = await interaction.response.send_message(f'e <#{ticket.id}>', ephemeral=True)
+                await ticket. ticket.send(interaction.user.mention)
         
         embed = discord.Embed(
             title=f'Create a Ticket',
