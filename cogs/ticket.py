@@ -41,9 +41,12 @@ class Ticket(commands.Cog):
                 class TicketClose(discord.ui.View):
                     @discord.ui.button(style=discord.ButtonStyle.blurple, label='Close', custom_id='ticket_close')
                     async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-                        await interaction.response.send_message("This ticket will be deleted in 5 seconds")
-                        await asyncio.sleep(5)
-                        await ticket.delete()
+                        if mod in interaction.user.roles:
+                            await interaction.response.send_message("This ticket will be deleted in 5 seconds")
+                            await asyncio.sleep(5)
+                            await ticket.delete()
+                        else:
+                            await interaction.response.send_message("You Don't have the permissions to do this")
                 await ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
                 await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
         
