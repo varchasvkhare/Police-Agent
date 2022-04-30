@@ -85,12 +85,12 @@ class Bot(commands.AutoShardedBot):
                 type=discord.ActivityType.playing,
                 name=f'-help'
             ),
-            activity=discord.Activity(
+            activity1=discord.Activity(
                 type=discord.ActivityType.streaming,
                 name='Detective Hub on Pom Hub',
                 url='https://www.twitch.tv/varchasvkhare'
             ),
-            activity=discord.Activity(
+            activity2=discord.Activity(
                 type=discord.ActivityType.watching,
                 name='pandey watching pom'
             )
