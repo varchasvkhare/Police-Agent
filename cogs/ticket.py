@@ -19,7 +19,7 @@ class Ticket(commands.Cog):
                 category = discord.utils.get(ctx.guild.categories, name='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼')
                 mod=discord.utils.get(ctx.guild.roles, name="Moderation Team")
                 
-                await interaction.guild.create_text_channel(
+                ticket = await interaction.guild.create_text_channel(
                     category=category,
                     name=f"Ticket-{interaction.user.id}",
                     overwrites={
@@ -29,8 +29,7 @@ class Ticket(commands.Cog):
                     }
                 )
                 
-                ticket = await interaction.response.send_message(f'e <#{ticket.id}>', ephemeral=True)
-                await ticket. ticket.send(interaction.user.mention)
+                await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
         
         embed = discord.Embed(
             title=f'Create a Ticket',
