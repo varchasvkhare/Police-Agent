@@ -41,7 +41,7 @@ class Ticket(commands.Cog):
                 class TicketClose(discord.ui.View):
                     @discord.ui.button(style=discord.ButtonStyle.blurple, label='Close', custom_id='ticket_close')
                     async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-                        await interaction.response("This ticket will be deleted in 5 seconds")
+                        await interaction.response.send_message("This ticket will be deleted in 5 seconds")
                         await asyncio.sleep(5)
                         await ticket.delete()
                 await ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
