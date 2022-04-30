@@ -29,7 +29,7 @@ async def _prefix_callable(bot: commands.AutoShardedBot, message: discord.Messag
 class ViewWithButton(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
-    @discord.ui.button(style=discord.ButtonStyle.green, label='Verify')
+    @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify')
     async def click_me_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         verified=discord.utils.get(ctx.guild.roles, name="[0] Verified")
         await interaction.response.send_message('I have give you access to the server!', ephemeral=True)
