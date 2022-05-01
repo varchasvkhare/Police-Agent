@@ -66,7 +66,7 @@ class Ticket(discord.ui.View):
                 else:
                     await interaction.response.send_message("You Don't have the permissions to do this")
         await Ticket.ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
-        await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
+        await interaction.response.send_message(f'ticket created in <#{Ticket.ticket.id}>', ephemeral=True)
 
 class TicketClose(Ticket):
     def __init__(self):
