@@ -68,7 +68,7 @@ class Ticket(discord.ui.View):
         await Ticket.ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
         await interaction.response.send_message(f'ticket created in <#{Ticket.ticket.id}>', ephemeral=True)
 
-class TicketClose(Ticket, discord.ui.view):
+class TicketClose(discord.ui.view):
     def __init__(self):
         super().__init__(timeout=None)
     @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
