@@ -69,7 +69,7 @@ class Ticket(discord.ui.View):
         await ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
         await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
 
-class TicketClose(discord.ui.view):
+class TicketClose(discord.ui.View):
     
     def __init__(self):
         super().__init__(timeout=None)
@@ -203,7 +203,7 @@ class Bot(commands.AutoShardedBot):
         await self._create_pool()
         self.add_view(Verify())
         self.add_view(Ticket())
-        #self.add_view(TicketClose())
+        self.add_view(TicketClose())
         
     async def start(self):
         await super().start(
