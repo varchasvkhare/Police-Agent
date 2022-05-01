@@ -18,9 +18,9 @@ class Kick(commands.Cog):
             title="Kick",
             description = inspect.cleandoc(
                 f"""
-                Offender: {member.name}#{member.discriminator}
-                Reason: {reason}
-                Responsible moderator: {ctx.author.name}#{ctx.author.discriminator}
+                **Offender:** {member.name}#{member.discriminator}
+                **Reason:** {reason}
+                **Responsible moderator:** {ctx.author.name}#{ctx.author.discriminator}
                 """
             )
         )
