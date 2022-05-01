@@ -1,5 +1,7 @@
+from ast import mod
 import random
 import os
+from re import sub
 import traceback
 import sys
 import asyncio
@@ -32,9 +34,9 @@ class Ticket(discord.ui.View):
     @discord.ui.button(style=discord.ButtonStyle.green, label='Create a Ticket', custom_id='ticket', emoji='<:mail:970204846579933204>')
     async def ticket_create_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         category = discord.utils.get(interaction.guild.categories, name='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼')
-        mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
+        Ticket.mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
                 
-        ticket = await interaction.guild.create_text_channel(
+        Ticket.ticket = await interaction.guild.create_text_channel(
             category=category,
             topic=interaction.user.id,
             name=f"Ticket-{interaction.user.name}",
@@ -57,14 +59,26 @@ class Ticket(discord.ui.View):
                 super().__init__(timeout=None)
             @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
             async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-                if mod in interaction.user.roles:
+                if Ticket.mod in interaction.user.roles:
                     await interaction.response.send_message("This ticket will be deleted in 5 seconds")
                     await asyncio.sleep(5)
-                    await ticket.delete()
+                    await Ticket.ticket.delete()
                 else:
                     await interaction.response.send_message("You Don't have the permissions to do this")
-        await ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
+        await Ticket.ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
         await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
+
+class TicketClose(Ticket):
+    def __init__(self):
+        super().__init__(timeout=None)
+    @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
+    async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if Ticket.mod in interaction.user.roles:
+            await interaction.response.send_message("This ticket will be deleted in 5 seconds")
+            await asyncio.sleep(5)
+            await Ticket.ticket.delete()
+        else:
+            await interaction.response.send_message("You Don't have the permissions to do this")
 
 class Verify(discord.ui.View):
     def __init__(self):
