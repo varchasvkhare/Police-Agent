@@ -24,7 +24,7 @@ class Kick(commands.Cog):
                 """
             )
         )
-        embed.set_footer(f"ID: {member.id}")
+        embed.set_footer(text=f"ID: {member.id}")
         if reason==None:
             reason="No reason provided"
             await ctx.guild.kick(member)
