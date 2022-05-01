@@ -89,8 +89,11 @@ class Verify(discord.ui.View):
     @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify')
     async def verification_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         verified=discord.utils.get(interaction.guild.roles, name="[0] Verified")
-        await interaction.response.send_message('I have given you access to the server!', ephemeral=True)
-        await interaction.user.add_roles(verified)
+        if verified in interaction.user.roles:
+            await interaction.response.send_message('Listen bud, You are already verified and remember not to waste time of Police Agents from next time.', ephemeral=True)
+        else:
+            await interaction.response.send_message('I have given you access to the server!', ephemeral=True)
+            await interaction.user.add_roles(verified)
 
 #---------------------------------------------------------------------------------------------------------
 
