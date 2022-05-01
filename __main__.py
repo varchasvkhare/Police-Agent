@@ -67,7 +67,7 @@ class Ticket(discord.ui.View):
                     await interaction.response.send_message("You Don't have the permissions to do this")
         await Ticket.ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
         await interaction.response.send_message(f'ticket created in <#{Ticket.ticket.id}>', ephemeral=True)
-
+'''
 class TicketClose(discord.ui.view):
     def __init__(self):
         super().__init__(timeout=None)
@@ -79,7 +79,7 @@ class TicketClose(discord.ui.view):
             await Ticket.ticket.delete()
         else:
             await interaction.response.send_message("You Don't have the permissions to do this")
-
+'''
 class Verify(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
@@ -201,7 +201,7 @@ class Bot(commands.AutoShardedBot):
         await self._create_pool()
         self.add_view(Verify())
         self.add_view(Ticket())
-        self.add_view(TicketClose())
+        #self.add_view(TicketClose())
         
     async def start(self):
         await super().start(
