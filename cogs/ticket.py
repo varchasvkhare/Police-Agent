@@ -42,7 +42,7 @@ class Ticket(commands.Cog):
                     )
                 )
                 class TicketClose(discord.ui.View):
-                    @discord.ui.button(style=discord.ButtonStyle.blurple, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
+                    @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
                     async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                         if mod in interaction.user.roles:
                             await interaction.response.send_message("This ticket will be deleted in 5 seconds")

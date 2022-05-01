@@ -53,6 +53,8 @@ class Ticket(discord.ui.View):
             )
         )
         class TicketClose(discord.ui.View):
+            def __init__(self):
+                super().__init__(timeout=None)
             @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
             async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 if mod in interaction.user.roles:
@@ -63,30 +65,6 @@ class Ticket(discord.ui.View):
                     await interaction.response.send_message("You Don't have the permissions to do this")
         await ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
         await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
-
-class TicketClose(discord.ui.View):
-    def __init__(self):
-        super().__init__(timeout=None)
-    @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
-    async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
-        category = discord.utils.get(interaction.guild.categories, name='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼')     
-        ticket = await interaction.guild.create_text_channel(
-            category=category,
-            topic=interaction.user.id,
-            name=f"Ticket-{interaction.user.name}",
-            overwrites={
-                interaction.guild.default_role: discord.PermissionOverwrite(view_channel=False),
-                interaction.user: discord.PermissionOverwrite(view_channel=True),
-                mod: discord.PermissionOverwrite(view_channel=True)
-            }
-        )
-        if mod in interaction.user.roles:
-            await interaction.response.send_message("This ticket will be deleted in 5 seconds")
-            await asyncio.sleep(5)
-            await ticket.delete()
-        else:
-            await interaction.response.send_message("You Don't have the permissions to do this")
 
 class Verify(discord.ui.View):
     def __init__(self):
@@ -209,7 +187,6 @@ class Bot(commands.AutoShardedBot):
         await self._create_pool()
         self.add_view(Verify())
         self.add_view(Ticket())
-        self.add_view(TicketClose())
         
     async def start(self):
         await super().start(
