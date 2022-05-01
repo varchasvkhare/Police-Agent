@@ -59,7 +59,7 @@ class Ticket(discord.ui.View):
                 super().__init__(timeout=None)
             @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
             async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-                mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
+                
                 if mod in interaction.user.roles:
                     await interaction.response.send_message("This ticket will be deleted in 5 seconds")
                     await asyncio.sleep(5)
@@ -75,6 +75,7 @@ class TicketClose(discord.ui.View):
         super().__init__(timeout=None)
     @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
     async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
         if mod in interaction.user.roles:
             await interaction.response.send_message("This ticket will be deleted in 5 seconds")
             await asyncio.sleep(5)
