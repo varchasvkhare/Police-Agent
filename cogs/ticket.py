@@ -18,7 +18,7 @@ class Ticket(commands.Cog):
         """ticket"""
         
         class Ticket(discord.ui.View):
-            @discord.ui.button(style=discord.ButtonStyle.green, label='Create a Ticket', custom_id='ticket', emoji='🎫')
+            @discord.ui.button(style=discord.ButtonStyle.green, label='Create a Ticket', custom_id='ticket', emoji='<:mail:970204846579933204>')
             async def ticket_create_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 category = discord.utils.get(ctx.guild.categories, name='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼')
                 mod=discord.utils.get(ctx.guild.roles, name="Moderation Team")
@@ -42,7 +42,7 @@ class Ticket(commands.Cog):
                     )
                 )
                 class TicketClose(discord.ui.View):
-                    @discord.ui.button(style=discord.ButtonStyle.blurple, label='Close', custom_id='ticket_close', emoji='<:allgood:935200030015516722>')
+                    @discord.ui.button(style=discord.ButtonStyle.blurple, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
                     async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                         if mod in interaction.user.roles:
                             await interaction.response.send_message("This ticket will be deleted in 5 seconds")

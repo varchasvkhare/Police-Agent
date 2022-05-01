@@ -25,11 +25,11 @@ async def _prefix_callable(bot: commands.AutoShardedBot, message: discord.Messag
     ]
     
     return base
-
+#BUTTON CLASS FOR PERSISTANCE-------------------------------------------------------------------------
 class Ticket(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
-    @discord.ui.button(style=discord.ButtonStyle.green, label='Create a Ticket', custom_id='ticket')
+    @discord.ui.button(style=discord.ButtonStyle.green, label='Create a Ticket', custom_id='ticket', emoji='<:mail:970204846579933204>')
     async def ticket_create_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         category = discord.utils.get(interaction.guild.categories, name='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼')
         mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
@@ -53,7 +53,7 @@ class Ticket(discord.ui.View):
             )
         )
         class TicketClose(discord.ui.View):
-            @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close')
+            @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
             async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 if mod in interaction.user.roles:
                     await interaction.response.send_message("This ticket will be deleted in 5 seconds")
@@ -64,6 +64,28 @@ class Ticket(discord.ui.View):
         await ticket.send(f'{interaction.user.mention}', embed=embed, view=TicketClose())
         await interaction.response.send_message(f'ticket created in <#{ticket.id}>', ephemeral=True)
 
+class TicketClose(discord.ui.View):
+    @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
+    async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
+        category = discord.utils.get(interaction.guild.categories, name='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼')     
+        ticket = await interaction.guild.create_text_channel(
+            category=category,
+            topic=interaction.user.id,
+            name=f"Ticket-{interaction.user.name}",
+            overwrites={
+                interaction.guild.default_role: discord.PermissionOverwrite(view_channel=False),
+                interaction.user: discord.PermissionOverwrite(view_channel=True),
+                mod: discord.PermissionOverwrite(view_channel=True)
+            }
+        )
+        if mod in interaction.user.roles:
+            await interaction.response.send_message("This ticket will be deleted in 5 seconds")
+            await asyncio.sleep(5)
+            await ticket.delete()
+        else:
+            await interaction.response.send_message("You Don't have the permissions to do this")
+
 class Verify(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
@@ -72,6 +94,8 @@ class Verify(discord.ui.View):
         verified=discord.utils.get(interaction.guild.roles, name="[0] Verified")
         await interaction.response.send_message('I have given you access to the server!', ephemeral=True)
         await interaction.user.add_roles(verified)
+
+#---------------------------------------------------------------------------------------------------------
 
 os.environ['JISHAKU_HIDE'] = 'True'
 os.environ['JISHAKU_NO_UNDERSCORE'] = 'True'
@@ -183,6 +207,7 @@ class Bot(commands.AutoShardedBot):
         await self._create_pool()
         self.add_view(Verify())
         self.add_view(Ticket())
+        self.add_view(TicketClose())
         
     async def start(self):
         await super().start(
