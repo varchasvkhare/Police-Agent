@@ -30,10 +30,12 @@ class Kick(commands.Cog):
             await ctx.guild.kick(member)
             await ctx.send(f"Successfully kicked {member.name}#{member.discriminator}")
             await log_channel.send(embed=embed)
+            await ctx.message.delete()
         else:
             await ctx.guild.kick(member, reason=reason)
             await ctx.send(f"Successfully kicked {member.name}#{member.discriminator}")
             await log_channel.send(embed=embed)
+            await ctx.message.delete()
 
         
 async def setup(bot):
