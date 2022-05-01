@@ -201,6 +201,7 @@ class Bot(commands.AutoShardedBot):
         await self._create_pool()
         self.add_view(Verify())
         self.add_view(Ticket())
+        self.add_view(TicketClose())
         
     async def start(self):
         await super().start(
