@@ -1,5 +1,5 @@
 import inspect
-import amari.py
+from amari import AmariClient
 import discord
 from discord.ext import commands
 
