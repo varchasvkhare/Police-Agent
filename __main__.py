@@ -144,23 +144,9 @@ class Bot(commands.AutoShardedBot):
     async def change_status(self):
         await self.change_presence(
             activity=discord.Activity(
-                type=discord.ActivityType.playing,
-                name=f'-help'
-            )
-        )
-        await asyncio.sleep(60)
-        await self.change_presence(
-            activity=discord.Activity(
                 type=discord.ActivityType.streaming,
-                name='Detective Hub on Pom Hub',
+                name='Detective Hub',
                 url='https://www.twitch.tv/varchasvkhare'
-            )
-        )
-        await asyncio.sleep(60)
-        await self.change_presence(
-            activity=discord.Activity(
-                type=discord.ActivityType.watching,
-                name='pandey watching pom'
             )
         )
 
