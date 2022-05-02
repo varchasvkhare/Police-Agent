@@ -31,6 +31,8 @@ class Kick(commands.Cog):
         elif member == ctx.author:
             await ctx.send("Why are you so dumb?? Imagine kicking your self")
             await ctx.message.delete()
+        elif member == ctx.guild.owner:
+            await ctx.send("Imagine you can kick the owner! LMAO...")
         else:
             if reason==None:
                 reason="No reason provided"
