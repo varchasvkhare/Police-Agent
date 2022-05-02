@@ -33,7 +33,7 @@ class Ticket(discord.ui.View):
         super().__init__(timeout=None)
     @discord.ui.button(style=discord.ButtonStyle.green, label='Create a Ticket', custom_id='ticket', emoji='<:mail:970204846579933204>')
     async def ticket_create_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        category = discord.utils.get(interaction.guild.categories, name='⪻ᚔᚓᚒᚑ᚜office᚛ᚑᚒᚓᚔ⪼')
+        category = discord.utils.get(interaction.guild.categories, name='⪻ᚔᚓᚒᚑ᚜hub᚛ᚑᚒᚓᚔ⪼')
         mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
                 
         ticket = await interaction.guild.create_text_channel(
