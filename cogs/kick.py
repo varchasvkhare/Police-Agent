@@ -22,7 +22,8 @@ class Kick(commands.Cog):
                 **Reason:** {reason}
                 **Responsible moderator:** {ctx.author.name}#{ctx.author.discriminator}
                 """
-            )
+            ),
+            color=0xff8b8b
         )
         embed.set_footer(text=f"ID: {member.id}")
         if member == ctx.author:
