@@ -24,7 +24,7 @@ class Amari(commands.Cog):
             ctx_user = await amari.fetch_user(760134264242700320, ctx_id)
         
             embed = discord.Embed(
-                title=f"{ctx.author.name}'s amari status",
+                title=f"{ctx.author.name}'s Amari Status",
                 description = inspect.cleandoc(
                     f"""
                     Level - {ctx_user.level}
@@ -42,7 +42,7 @@ class Amari(commands.Cog):
             member_user = await amari.fetch_user(760134264242700320, member_id)
             
             embed = discord.Embed(
-                title=f"{ctx.author.name}'s amari status",
+                title=f"{member.name}'s Amari Status",
                 description = inspect.cleandoc(
                     f"""
                     Level - {member_user.level}
