@@ -143,15 +143,13 @@ class Bot(commands.AutoShardedBot):
     @tasks.loop(minutes=1)
     async def change_status(self):
         await self.change_presence(
-            activity=discord.Activity(next(
-                type=discord.ActivityType.streaming,
-                name='Detective Hub',
-                url='https://www.twitch.tv/varchasvkhare'
-            ),
+            status=discord.Status.dnd,
+            activity=discord.Activity(
                 type=discord.ActivityType.watching,
-                name='Pandey watching pom'
+                name='Silently! Be Careful.'
             )
         )
+        
 
     @change_status.before_loop
     async def _before_change_status(self):
