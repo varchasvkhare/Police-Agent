@@ -28,7 +28,7 @@ class Amari(commands.Cog):
                 description = inspect.cleandoc(
                     f"""
                     Level - {ctx_user.level}
-                    XP - {ctx_user.exp} {ctx_user.position}
+                    XP - {ctx_user.exp}
                     Weekly XP - {ctx_user.weeklyexp}
                     """
                 ),
@@ -46,7 +46,7 @@ class Amari(commands.Cog):
                 description = inspect.cleandoc(
                     f"""
                     Level - {member_user.level}
-                    XP - {member_user.exp} {ctx_user.position}
+                    XP - {member_user.exp}
                     Weekly XP - {member_user.weeklyexp}
                     """
                 ),
