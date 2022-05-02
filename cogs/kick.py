@@ -26,7 +26,7 @@ class Kick(commands.Cog):
         )
         embed.set_footer(text=f"ID: {member.id}")
         if member == ctx.author:
-            await ctx.send("Why are you so dumb?? Imagine kicking your self")
+            await ctx.send("Why are you so dumb?? Imagine kicking yourself")
             await ctx.message.delete()
         elif member.top_role >= ctx.author.top_role:
             await ctx.send("You're not high enough in the role hierarchy to do that.")
