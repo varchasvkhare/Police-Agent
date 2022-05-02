@@ -25,17 +25,24 @@ class Kick(commands.Cog):
             )
         )
         embed.set_footer(text=f"ID: {member.id}")
-        if reason==None:
-            reason="No reason provided"
-            await ctx.guild.kick(member)
-            await ctx.send(f"Successfully kicked {member.name}#{member.discriminator}")
-            await log_channel.send(embed=embed)
+        if member.top_role >= ctx.author.top_role:
+            await ctx.send("You're not high enough in the role hierarchy to do that.")
+            await ctx.message.delete()
+        elif member == ctx.author:
+            await ctx.send("Why are you so dumb?? Imagine kicking your self")
             await ctx.message.delete()
         else:
-            await ctx.guild.kick(member, reason=reason)
-            await ctx.send(f"Successfully kicked {member.name}#{member.discriminator}")
-            await log_channel.send(embed=embed)
-            await ctx.message.delete()
+            if reason==None:
+                reason="No reason provided"
+                await ctx.guild.kick(member)
+                await ctx.send(f"Successfully kicked {member.name}#{member.discriminator}")
+                await log_channel.send(embed=embed)
+                await ctx.message.delete()
+            else:
+                await ctx.guild.kick(member, reason=reason)
+                await ctx.send(f"Successfully kicked {member.name}#{member.discriminator}")
+                await log_channel.send(embed=embed)
+                await ctx.message.delete()
 
         
 async def setup(bot):

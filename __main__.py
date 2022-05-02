@@ -77,7 +77,7 @@ class TicketClose(discord.ui.View):
     async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         mod=discord.utils.get(interaction.guild.roles, name="Moderation Team")
         if mod in interaction.user.roles:
-            await interaction.response.send_message("This ticket will be deleted in 5 seconds")
+            await interaction.response.send_message("This ticket will be deleted in <a:5secs:970384338413842512> seconds")
             await asyncio.sleep(5)
             await interaction.channel.delete()
         else:

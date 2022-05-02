@@ -45,7 +45,7 @@ class Ticket(commands.Cog):
                     @discord.ui.button(style=discord.ButtonStyle.gray, label='Close', custom_id='ticket_close', emoji='<:closed:970208866728022106>')
                     async def ticket_close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                         if mod in interaction.user.roles:
-                            await interaction.response.send_message("This ticket will be deleted in 5 seconds")
+                            await interaction.response.send_message("This ticket will be deleted in <a:5secs:970384338413842512> seconds")
                             await asyncio.sleep(5)
                             await ticket.delete()
                         else:
