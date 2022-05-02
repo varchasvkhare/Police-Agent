@@ -25,11 +25,11 @@ class Kick(commands.Cog):
             )
         )
         embed.set_footer(text=f"ID: {member.id}")
-        if member.top_role >= ctx.author.top_role:
-            await ctx.send("You're not high enough in the role hierarchy to do that.")
-            await ctx.message.delete()
-        elif member == ctx.author:
+        if member == ctx.author:
             await ctx.send("Why are you so dumb?? Imagine kicking your self")
+            await ctx.message.delete()
+        elif member.top_role >= ctx.author.top_role:
+            await ctx.send("You're not high enough in the role hierarchy to do that.")
             await ctx.message.delete()
         elif member == ctx.guild.owner:
             await ctx.send("Imagine you can kick the owner! LMAO...")
