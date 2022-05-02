@@ -113,7 +113,8 @@ class Bot(commands.AutoShardedBot):
             owner_ids=[
                 868465221373665351,
                 748552378504052878 # pandey
-            ]
+            ],
+            help_command=None
         )
 
         self.add_check(self.blacklisted_check)
