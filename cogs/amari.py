@@ -24,12 +24,15 @@ class Amari(commands.Cog):
             ctx_user = await amari.fetch_user(760134264242700320, ctx_id)
         
             embed = discord.Embed(
-                title=f"{ctx.author.name}'s Amari Status",
+                title=f"{ctx.author.name}'s Amari Rank",
                 description = inspect.cleandoc(
                     f"""
-                    Level - {ctx_user.level}
-                    XP - {ctx_user.exp}
-                    Weekly XP - {ctx_user.weeklyexp}
+                    **Level**
+                    {ctx_user.level}
+                    **XP**
+                    {ctx_user.exp}
+                    **Weekly XP**
+                    {ctx_user.weeklyexp}
                     """
                 ),
                 color=0x9C84EF
@@ -42,12 +45,15 @@ class Amari(commands.Cog):
             member_user = await amari.fetch_user(760134264242700320, member_id)
             
             embed = discord.Embed(
-                title=f"{member.name}'s Amari Status",
+                title=f"{member.name}'s Amari Rank",
                 description = inspect.cleandoc(
                     f"""
-                    Level - {member_user.level}
-                    XP - {member_user.exp}
-                    Weekly XP - {member_user.weeklyexp}
+                    **Level**
+                    {member_user.level}
+                    **XP**
+                    {member_user.exp}
+                    **Weekly XP**
+                    {member_user.weeklyexp}
                     """
                 ),
                 color=0x9C84EF
