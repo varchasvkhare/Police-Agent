@@ -4,16 +4,16 @@ import inspect
 import discord
 from discord.ext import commands
 
-class PingRoles(commands.Cog):
+class SelfRoles(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.command(name="pingroles")
+    @commands.command(name="selfroles")
     @commands.check_any(
         commands.has_any_role(903238046323998720),
         commands.has_permissions(administrator=True)
     )
-    async def pingroles(self, ctx: commands.Context) -> None:
+    async def selfroles(self, ctx: commands.Context) -> None:
         """ping roles"""
         class Announcements(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.blurple, label='Announcements', custom_id='announcements', emoji='<:announcements:970937379839967332>')
@@ -26,7 +26,6 @@ class PingRoles(commands.Cog):
                     await interaction.response.send_message(f'I have added {announcement.mention} to you', ephemeral=True)
                     await interaction.user.add_roles(announcement)
         
-        #class Giveaways(discord.ui.view):
             @discord.ui.button(style=discord.ButtonStyle.blurple, label='Giveaways', custom_id='giveaways', emoji='<a:giveaways:970959495708676146>')
             async def gaw_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 gaws=discord.utils.get(ctx.guild.roles, name="• ❯ Giveaways")
@@ -36,6 +35,26 @@ class PingRoles(commands.Cog):
                 else:
                     await interaction.response.send_message(f'I have added {gaws.mention} to you', ephemeral=True)
                     await interaction.user.add_roles(gaws)
+                    
+            @discord.ui.button(style=discord.ButtonStyle.blurple, label='Events', custom_id='events', emoji='<a:giveaways:970959495708676146>')
+            async def gaw_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+                event=discord.utils.get(ctx.guild.roles, name="• ❯ Events")
+                if event in interaction.user.roles:
+                    await interaction.response.send_message(f'I have removed {event.mention} from you', ephemeral=True)
+                    await interaction.user.remove_roles(event)
+                else:
+                    await interaction.response.send_message(f'I have added {event.mention} to you', ephemeral=True)
+                    await interaction.user.add_roles(event)
+                    
+            @discord.ui.button(style=discord.ButtonStyle.blurple, label='Status', custom_id='status', emoji='<a:giveaways:970959495708676146>')
+            async def gaw_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+                sta=discord.utils.get(ctx.guild.roles, name="• ❯ Status")
+                if sta in interaction.user.roles:
+                    await interaction.response.send_message(f'I have removed {sta.mention} from you', ephemeral=True)
+                    await interaction.user.remove_roles(sta)
+                else:
+                    await interaction.response.send_message(f'I have added {sta.mention} to you', ephemeral=True)
+                    await interaction.user.add_roles(sta)
                 
                 
         embed = discord.Embed(
@@ -50,5 +69,5 @@ class PingRoles(commands.Cog):
         await ctx.send(embed=embed, view=Announcements())
         
 async def setup(bot):
-    await bot.add_cog(PingRoles(bot))
+    await bot.add_cog(SelfRoles(bot))
 
