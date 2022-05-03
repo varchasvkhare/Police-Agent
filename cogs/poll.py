@@ -24,8 +24,8 @@ class Poll(commands.Cog):
         )
         embed.set_footer(text='react with any one option')
         message = await ctx.channel.send(embed=embed)
-        await message.add_reaction('👍')
-        await message.add_reaction('👎')
+        await message.add_reaction('<a:yes:969908127145283594>')
+        await message.add_reaction('<a:no:969908471451508766>')
         
 async def setup(bot):
     await bot.add_cog(Poll(bot))
