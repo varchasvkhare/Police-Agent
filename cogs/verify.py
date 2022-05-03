@@ -16,7 +16,7 @@ class Verify(commands.Cog):
     async def verify(self, ctx: commands.Context) -> None:
         """Server Verification"""
         class Verify(discord.ui.View):
-            @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify')
+            @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify', emoji='<:DiscordVerified:970932623734104095>')
             async def verification_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 verified=discord.utils.get(ctx.guild.roles, name="[0] Verified")
                 if verified in interaction.user.roles:
@@ -31,7 +31,7 @@ class Verify(commands.Cog):
             description=inspect.cleandoc(
                 f"""
                 If you have successfully read the above rules then click the button below to get verified.
-                In case if the button is not working open a ticken in <#969952359407030322>
+                In case if the button is not working open a ticket in <#969952359407030322>
                 
                 """
             ),

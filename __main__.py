@@ -81,12 +81,12 @@ class TicketClose(discord.ui.View):
             await asyncio.sleep(5)
             await interaction.channel.delete()
         else:
-            await interaction.response.send_message("You Don't have the permissions to do this")
+            await interaction.response.send_message("You Don't have the permissions to do this", ephemeral=True)
 
 class Verify(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
-    @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify')
+    @discord.ui.button(style=discord.ButtonStyle.green, label='Verify', custom_id='verify', emoji='<:DiscordVerified:970932623734104095>')
     async def verification_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         verified=discord.utils.get(interaction.guild.roles, name="[0] Verified")
         if verified in interaction.user.roles:
