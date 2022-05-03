@@ -152,7 +152,7 @@ class SelfRoles(commands.Cog):
                 emoji='<a:giveaways:970959495708676146>',
                 row=2
             )
-            async def status_button(
+            async def giveaways_button(
                 self,
                 interaction: discord.Interaction,
                 button: discord.ui.Button
@@ -168,16 +168,16 @@ class SelfRoles(commands.Cog):
                         await interaction.response.send_message(f'I have added {giveaways.mention} to you', ephemeral=True)
                         await interaction.user.add_roles(giveaways)
                 else:
-                    interaction.response.send_message(f'You need the {gaw_access.mention} to get this role', ephemeral=True)
+                    await interaction.response.send_message(f'You need the {gaw_access.mention} to get this role', ephemeral=True)
           
             @discord.ui.button(
                 style=discord.ButtonStyle.blurple,
                 label='Events',
                 custom_id='events',
                 emoji='<a:events:971012368245067826>',
-                row=2
+                row=3
             )
-            async def status_button(
+            async def events_button(
                 self,
                 interaction: discord.Interaction,
                 button: discord.ui.Button
@@ -193,14 +193,14 @@ class SelfRoles(commands.Cog):
                         await interaction.response.send_message(f'I have added {events.mention} to you', ephemeral=True)
                         await interaction.user.add_roles(events)
                 else:
-                    interaction.response.send_message(f'You need the {event_access.mention} to get this role', ephemeral=True)
+                    await interaction.response.send_message(f'You need the {event_access.mention} to get this role', ephemeral=True)
             
             @discord.ui.button(
                 style=discord.ButtonStyle.blurple,
                 label='Polls',
                 custom_id='polls',
                 emoji='<a:polls:971013012838297651>',
-                row=2
+                row=3
             )
             async def polls_button(
                 self,
