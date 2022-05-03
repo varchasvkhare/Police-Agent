@@ -73,7 +73,7 @@ class SelfRole(commands.Cog):
                 interaction: discord.Interaction,
                 button: discord.ui.Button
             ):
-                bot_access = discord.utils.get(ctx.guild.roles, name="Bot Access")
+                bot_access = discord.utils.get(ctx.guild.roles, name="Bots Access")
                 
                 if bot_access in interaction.user.roles:
                     await interaction.response.send_message(f'I have removed {bot_access.mention} from you', ephemeral=True)
