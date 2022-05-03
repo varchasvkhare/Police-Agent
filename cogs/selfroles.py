@@ -102,6 +102,27 @@ class SelfRoles(commands.Cog):
                 else:
                     await interaction.response.send_message(f'I have added {announcements.mention} to you', ephemeral=True)
                     await interaction.user.add_roles(announcements)
+                    
+            @discord.ui.button(
+                style=discord.ButtonStyle.blurple,
+                label='Status',
+                custom_id='status',
+                emoji='<:announcements:970937379839967332>',
+                row=3
+            )
+            async def status_button(
+                self,
+                interaction: discord.Interaction,
+                button: discord.ui.Button
+            ):
+                status = discord.utils.get(ctx.guild.roles, name="• ❯ Status")
+                
+                if status in interaction.user.roles:
+                    await interaction.response.send_message(f'I have removed {status.mention} from you', ephemeral=True)
+                    await interaction.user.remove_roles(status)
+                else:
+                    await interaction.response.send_message(f'I have added {status.mention} to you', ephemeral=True)
+                    await interaction.user.add_roles(status)
         
 
                 
