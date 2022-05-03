@@ -60,6 +60,11 @@ class Rules(commands.Cog):
                 Advertisements of any kinds is not allowed in this server outside of #self-advertise and Partnerships.
                 Punishment - Warn/Mute
                 
+                **12・Common Sense**
+                Since we can't include everything in a short set of rules, but using your common sense is really important. Exploiting loopholes in our rules is not allowed and you can still be punished if you have not explicitly broken a rule.
+                Punishment - Depends
+                
+                *Don't forget to check pinned messages and channel descriptions for channel specific rules.*
                 """
             ),
             color=0x111111

@@ -12,7 +12,7 @@ class Amari(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        name="amari", aliases = ["level"]
+        name="amari", aliases = ["level", "lvl"]
     )
     async def amari(self, ctx: commands.Context, member: discord.Member = None) -> None:
         """Check your amari level"""
@@ -29,8 +29,10 @@ class Amari(commands.Cog):
                     f"""
                     **Level**
                     {ctx_user.level}
+                    
                     **XP**
                     {ctx_user.exp}
+                    
                     **Weekly XP**
                     {ctx_user.weeklyexp}
                     """
@@ -50,8 +52,10 @@ class Amari(commands.Cog):
                     f"""
                     **Level**
                     {member_user.level}
+                    
                     **XP**
                     {member_user.exp}
+                    
                     **Weekly XP**
                     {member_user.weeklyexp}
                     """
