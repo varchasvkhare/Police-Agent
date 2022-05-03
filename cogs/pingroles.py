@@ -26,7 +26,7 @@ class PingRoles(commands.Cog):
                     await interaction.response.send_message(f'I have added {announcement.mention} to you', ephemeral=True)
                     await interaction.user.add_roles(announcement)
         
-        class Giveaways(discord.ui.view):
+        #class Giveaways(discord.ui.view):
             @discord.ui.button(style=discord.ButtonStyle.blurple, label='Giveaways', custom_id='giveaways', emoji='<:announcements:970937379839967332>')
             async def verification_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 gaws=discord.utils.get(ctx.guild.roles, name="• ❯ Giveaways")
@@ -47,7 +47,7 @@ class PingRoles(commands.Cog):
             ),
             color=0x111111
         )
-        await ctx.send(embed=embed, view=[Announcements(), Giveaways()])
+        await ctx.send(embed=embed, view=Announcements())
         
 async def setup(bot):
     await bot.add_cog(PingRoles(bot))
