@@ -4,7 +4,7 @@ import inspect
 import discord
 from discord.ext import commands
 
-class SelfRoles(commands.Cog):
+class SelfRole(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
@@ -15,7 +15,7 @@ class SelfRoles(commands.Cog):
     )
     async def selfroles(self, ctx: commands.Context) -> None:
         """ping roles"""
-        class Announcements(discord.ui.View):
+        class SelfRoles(discord.ui.View):
             @discord.ui.button(
                 style = discord.ButtonStyle.green,
                 label = 'Giveaways Access',
@@ -136,7 +136,7 @@ class SelfRoles(commands.Cog):
                 interaction: discord.Interaction,
                 button: discord.ui.Button
             ):
-                partnership = discord.utils.get(ctx.guild.roles, name="• ❯ Partnership")
+                partnership = discord.utils.get(ctx.guild.roles, name="• ❯ Partnerships")
                 
                 if partnership in interaction.user.roles:
                     await interaction.response.send_message(f'I have removed {partnership.mention} from you', ephemeral=True)
@@ -150,7 +150,7 @@ class SelfRoles(commands.Cog):
                 label='Giveaways',
                 custom_id='giveaways',
                 emoji='<a:giveaways:970959495708676146>',
-                row=2
+                row=3
             )
             async def giveaways_button(
                 self,
@@ -200,7 +200,7 @@ class SelfRoles(commands.Cog):
                 label='Polls',
                 custom_id='polls',
                 emoji='<a:polls:971013012838297651>',
-                row=3
+                row=2
             )
             async def polls_button(
                 self,
@@ -239,8 +239,8 @@ class SelfRoles(commands.Cog):
             ),
             color=0xfcf55f
         )
-        await ctx.send(embed=embed, view=Announcements())
+        await ctx.send(embed=embed, view=SelfRoles())
         
 async def setup(bot):
-    await bot.add_cog(SelfRoles(bot))
+    await bot.add_cog(SelfRole(bot))
 
