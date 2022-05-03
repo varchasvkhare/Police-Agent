@@ -233,6 +233,7 @@ class SelfRole(commands.Cog):
                 ・Announcements - Get notified on any server updates, staff applications etc
                 ・Status - Get notified on bot's uptime and downtime
                 ・Partnership - Get pinged whenever we partner with a server
+                ・Polls - Get notified to react in polls
                 ・Giveaways - Get pinged on any ongoing giveaway
                 ・Events - Get notified on any ongoing event
                 """
