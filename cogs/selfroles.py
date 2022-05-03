@@ -174,7 +174,7 @@ class SelfRoles(commands.Cog):
                 style=discord.ButtonStyle.blurple,
                 label='Events',
                 custom_id='events',
-                emoji='<:event:971001579593428992>',
+                emoji='<a:events:971012368245067826>',
                 row=2
             )
             async def status_button(
