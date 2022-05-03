@@ -27,7 +27,7 @@ class PingRoles(commands.Cog):
                     await interaction.user.add_roles(announcement)
         
         #class Giveaways(discord.ui.view):
-            @discord.ui.button(style=discord.ButtonStyle.blurple, label='Giveaways', custom_id='giveaways', emoji='<:announcements:970937379839967332>')
+            @discord.ui.button(style=discord.ButtonStyle.blurple, label='Giveaways', custom_id='giveaways', emoji='<a:giveaways:970959495708676146>')
             async def gaw_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 gaws=discord.utils.get(ctx.guild.roles, name="• ❯ Giveaways")
                 if gaws in interaction.user.roles:
