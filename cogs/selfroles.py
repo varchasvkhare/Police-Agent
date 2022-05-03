@@ -107,8 +107,8 @@ class SelfRoles(commands.Cog):
                 style=discord.ButtonStyle.blurple,
                 label='Status',
                 custom_id='status',
-                emoji='<:announcements:970937379839967332>',
-                row=3
+                emoji='<a:Signal:971011415710261278>',
+                row=2
             )
             async def status_button(
                 self,
@@ -123,7 +123,98 @@ class SelfRoles(commands.Cog):
                 else:
                     await interaction.response.send_message(f'I have added {status.mention} to you', ephemeral=True)
                     await interaction.user.add_roles(status)
-        
+            
+            @discord.ui.button(
+                style=discord.ButtonStyle.blurple,
+                label='Partnership',
+                custom_id='partnership',
+                emoji='<a:partner:971010741761081404>',
+                row=2
+            )
+            async def partnership_button(
+                self,
+                interaction: discord.Interaction,
+                button: discord.ui.Button
+            ):
+                partnership = discord.utils.get(ctx.guild.roles, name="• ❯ Partnership")
+                
+                if partnership in interaction.user.roles:
+                    await interaction.response.send_message(f'I have removed {partnership.mention} from you', ephemeral=True)
+                    await interaction.user.remove_roles(partnership)
+                else:
+                    await interaction.response.send_message(f'I have added {partnership.mention} to you', ephemeral=True)
+                    await interaction.user.add_roles(partnership)
+            
+            @discord.ui.button(
+                style=discord.ButtonStyle.blurple,
+                label='Giveaways',
+                custom_id='giveaways',
+                emoji='<a:giveaways:970959495708676146>',
+                row=2
+            )
+            async def status_button(
+                self,
+                interaction: discord.Interaction,
+                button: discord.ui.Button
+            ):
+                giveaways = discord.utils.get(ctx.guild.roles, name="• ❯ Giveaways")
+                gaw_access = discord.utils.get(ctx.guild.roles, name="Giveaway Access")
+                
+                if gaw_access in interaction.user.roles:
+                    if giveaways in interaction.user.roles:
+                        await interaction.response.send_message(f'I have removed {giveaways.mention} from you', ephemeral=True)
+                        await interaction.user.remove_roles(giveaways)
+                    else:
+                        await interaction.response.send_message(f'I have added {giveaways.mention} to you', ephemeral=True)
+                        await interaction.user.add_roles(giveaways)
+                else:
+                    interaction.response.send_message(f'You need the {gaw_access.mention} to get this role', ephemeral=True)
+          
+            @discord.ui.button(
+                style=discord.ButtonStyle.blurple,
+                label='Events',
+                custom_id='events',
+                emoji='<:event:971001579593428992>',
+                row=2
+            )
+            async def status_button(
+                self,
+                interaction: discord.Interaction,
+                button: discord.ui.Button
+            ):
+                events = discord.utils.get(ctx.guild.roles, name="• ❯ Events")
+                event_access = discord.utils.get(ctx.guild.roles, name="Event Access")
+                
+                if event_access in interaction.user.roles:
+                    if events in interaction.user.roles:
+                        await interaction.response.send_message(f'I have removed {events.mention} from you', ephemeral=True)
+                        await interaction.user.remove_roles(events)
+                    else:
+                        await interaction.response.send_message(f'I have added {events.mention} to you', ephemeral=True)
+                        await interaction.user.add_roles(events)
+                else:
+                    interaction.response.send_message(f'You need the {event_access.mention} to get this role', ephemeral=True)
+            
+            @discord.ui.button(
+                style=discord.ButtonStyle.blurple,
+                label='Polls',
+                custom_id='polls',
+                emoji='<a:polls:971013012838297651>',
+                row=2
+            )
+            async def polls_button(
+                self,
+                interaction: discord.Interaction,
+                button: discord.ui.Button
+            ):
+                polls = discord.utils.get(ctx.guild.roles, name="• ❯ Polls")
+                
+                if polls in interaction.user.roles:
+                    await interaction.response.send_message(f'I have removed {polls.mention} from you', ephemeral=True)
+                    await interaction.user.remove_roles(polls)
+                else:
+                    await interaction.response.send_message(f'I have added {polls.mention} to you', ephemeral=True)
+                    await interaction.user.add_roles(polls)
 
                 
                 
