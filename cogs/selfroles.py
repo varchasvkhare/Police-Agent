@@ -73,7 +73,7 @@ class SelfRoles(commands.Cog):
                 interaction: discord.Interaction,
                 button: discord.ui.Button
             ):
-                bot_access = discord.utils.get(ctx.guild.roles, name="Event Access")
+                bot_access = discord.utils.get(ctx.guild.roles, name="Bot Access")
                 
                 if bot_access in interaction.user.roles:
                     await interaction.response.send_message(f'I have removed {bot_access.mention} from you', ephemeral=True)
@@ -81,6 +81,27 @@ class SelfRoles(commands.Cog):
                 else:
                     await interaction.response.send_message(f'I have added {bot_access.mention} to you', ephemeral=True)
                     await interaction.user.add_roles(bot_access)
+                    
+            @discord.ui.button(
+                style=discord.ButtonStyle.blurple,
+                label='Announcements',
+                custom_id='announcements',
+                emoji='<:announcements:970937379839967332>',
+                row=2
+            )
+            async def announcements_button(
+                self,
+                interaction: discord.Interaction,
+                button: discord.ui.Button
+            ):
+                announcements = discord.utils.get(ctx.guild.roles, name="• ❯ Announcements")
+                
+                if announcements in interaction.user.roles:
+                    await interaction.response.send_message(f'I have removed {announcements.mention} from you', ephemeral=True)
+                    await interaction.user.remove_roles(announcements)
+                else:
+                    await interaction.response.send_message(f'I have added {announcements.mention} to you', ephemeral=True)
+                    await interaction.user.add_roles(announcements)
         
 
                 
