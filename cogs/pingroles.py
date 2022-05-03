@@ -17,7 +17,7 @@ class PingRoles(commands.Cog):
         """ping roles"""
         class Announcements(discord.ui.View):
             @discord.ui.button(style=discord.ButtonStyle.blurple, label='Announcements', custom_id='announcements', emoji='<:announcements:970937379839967332>')
-            async def verification_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+            async def announcement_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 announcement=discord.utils.get(ctx.guild.roles, name="• ❯ Announcements")
                 if announcement in interaction.user.roles:
                     await interaction.response.send_message(f'I have removed {announcement.mention} from you', ephemeral=True)
@@ -28,7 +28,7 @@ class PingRoles(commands.Cog):
         
         #class Giveaways(discord.ui.view):
             @discord.ui.button(style=discord.ButtonStyle.blurple, label='Giveaways', custom_id='giveaways', emoji='<:announcements:970937379839967332>')
-            async def verification_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+            async def gaw_button(self, interaction: discord.Interaction, button: discord.ui.Button):
                 gaws=discord.utils.get(ctx.guild.roles, name="• ❯ Giveaways")
                 if gaws in interaction.user.roles:
                     await interaction.response.send_message(f'I have removed {gaws.mention} from you', ephemeral=True)
