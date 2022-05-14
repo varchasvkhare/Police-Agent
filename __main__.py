@@ -319,7 +319,6 @@ class Bot(commands.AutoShardedBot):
                 748552378504052878 # pandey
             ]
         )
-        self.tree = app_commands.CommandTree(self)
         self.add_check(self.blacklisted_check)
     
     async def blacklisted_check(self, ctx: commands.Context):
