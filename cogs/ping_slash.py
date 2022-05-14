@@ -4,23 +4,20 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from __main__ import MY_GUILD
-
 MY_GUILD = discord.Object(id=760134264242700320)
 
-class Bot(commands.AutoShardedBot):
+
+class MyClient(discord.Client):
     def __init__(self, *, intents: discord.Intents, application_id: int):
-        super().__init__(
-            intents=intents,
-            application_id=application_id
-        )
-    async def setup_hook(self) -> None:
+        super().__init__(intents=intents, application_id=application_id)
+        self.tree = app_commands.CommandTree(self)
+    async def setup_hook(self):
         self.tree.copy_global_to(guild=MY_GUILD)
         await self.tree.sync(guild=MY_GUILD)
 
-intents = discord.Intents.all()
+intents = discord.Intents.default()
 
-client = Bot(intents=intents, application_id=919149033820418059)
+client = MyClient(intents=intents, application_id=919149033820418059)
 
 class Ping_Slash(commands.Cog):
     def __init__(self, bot):
