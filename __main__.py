@@ -8,6 +8,7 @@ import asyncio
 import inspect
 
 import discord
+from discord import app_commands
 from discord.ext import commands, tasks
 import asyncpg
 
@@ -318,6 +319,7 @@ class Bot(commands.AutoShardedBot):
             ],
             help_command=None
         )
+        self.tree = app_commands.CommandTree(self)
 
         self.add_check(self.blacklisted_check)
     
