@@ -397,14 +397,15 @@ class Bot(commands.AutoShardedBot):
         await self.db.execute('CREATE TABLE IF NOT EXISTS blacklist (user_id BIGINT)')
 
     async def setup_hook(self) -> None:
+        self.tree.copy_global_to(guild=MY_GUILD)
+        await self.tree.sync(guild=MY_GUILD)
         asyncio.create_task(self._startup_task())
         await self._create_pool()
         self.add_view(Verify())
         self.add_view(Ticket())
         self.add_view(TicketClose())
         self.add_view(SelfRoles())
-        self.tree.copy_global_to(guild=MY_GUILD)
-        await self.tree.sync(guild=MY_GUILD)
+        
         
     async def start(self):
         await super().start(
