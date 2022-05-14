@@ -5,7 +5,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-class Stats(commands.Cog):
+class Ping_Slash(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -27,5 +27,5 @@ class Stats(commands.Cog):
         await interaction.response.send_message(embed=embed, ephemeral=True)
         
 async def setup(bot):
-    await bot.add_cog(Stats(bot))
+    await bot.add_cog(Ping_Slash(bot))
 
