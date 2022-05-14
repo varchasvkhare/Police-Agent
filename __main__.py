@@ -300,6 +300,8 @@ class SelfRoles(discord.ui.View):
             await interaction.user.add_roles(polls)
 #---------------------------------------------------------------------------------------------------------
 
+MY_GUILD = discord.Object(id=760134264242700320)
+
 os.environ['JISHAKU_HIDE'] = 'True'
 os.environ['JISHAKU_NO_UNDERSCORE'] = 'True'
 os.environ['JISHAKU_FORCE_PAGINATOR'] = 'True'
@@ -401,6 +403,8 @@ class Bot(commands.AutoShardedBot):
         self.add_view(Ticket())
         self.add_view(TicketClose())
         self.add_view(SelfRoles())
+        self.tree.copy_global_to(guild=MY_GUILD)
+        await self.tree.sync(guild=MY_GUILD)
         
     async def start(self):
         await super().start(
