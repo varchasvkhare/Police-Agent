@@ -311,14 +311,14 @@ class Bot(commands.AutoShardedBot):
         super().__init__(
             command_prefix=_prefix_callable,
             shard_count=1, 
-            intents=discord.Intents.all(),
+            intents=intents,
             case_insensitive=True,
             strip_after_prefix=True,
             owner_ids=[
                 868465221373665351,
                 748552378504052878 # pandey
             ],
-            application_id='919149033820418059'
+            application_id=application_id
         )
         self.add_check(self.blacklisted_check)
     
@@ -408,7 +408,8 @@ class Bot(commands.AutoShardedBot):
             token=BOT_TOKEN,
             reconnect=True
         )
+intents = discord.Intents.all()
 
 if __name__ == '__main__':
-    bot = Bot()
+    bot = Bot(intents=intents, application_id=919149033820418059)
     bot.run()
