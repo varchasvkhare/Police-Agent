@@ -8,7 +8,6 @@ import asyncio
 import inspect
 
 import discord
-from discord import app_commands
 from discord.ext import commands, tasks
 import asyncpg
 
@@ -300,8 +299,6 @@ class SelfRoles(discord.ui.View):
             await interaction.user.add_roles(polls)
 #---------------------------------------------------------------------------------------------------------
 
-MY_GUILD = discord.Object(id=760134264242700320)
-
 os.environ['JISHAKU_HIDE'] = 'True'
 os.environ['JISHAKU_NO_UNDERSCORE'] = 'True'
 os.environ['JISHAKU_FORCE_PAGINATOR'] = 'True'
@@ -321,7 +318,6 @@ class Bot(commands.AutoShardedBot):
             ],
             help_command=None
         )
-        self.tree = app_commands.CommandTree(self)
 
         self.add_check(self.blacklisted_check)
     
@@ -397,15 +393,12 @@ class Bot(commands.AutoShardedBot):
         await self.db.execute('CREATE TABLE IF NOT EXISTS blacklist (user_id BIGINT)')
 
     async def setup_hook(self) -> None:
-        self.tree.copy_global_to(guild=MY_GUILD)
-        await self.tree.sync(guild=MY_GUILD)
         asyncio.create_task(self._startup_task())
         await self._create_pool()
         self.add_view(Verify())
         self.add_view(Ticket())
         self.add_view(TicketClose())
         self.add_view(SelfRoles())
-        
         
     async def start(self):
         await super().start(
