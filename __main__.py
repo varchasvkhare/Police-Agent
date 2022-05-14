@@ -307,7 +307,7 @@ os.environ['JISHAKU_FORCE_PAGINATOR'] = 'True'
 os.environ['JISHAKU_NO_DM_TRACEBACK'] = 'True'
 
 class Bot(commands.AutoShardedBot):
-    def __init__(self, application_id: 919149033820418059):
+    def __init__(self, *, intents: discord.Intents, application_id: int):
         super().__init__(
             command_prefix=_prefix_callable,
             shard_count=1, 
@@ -318,7 +318,7 @@ class Bot(commands.AutoShardedBot):
                 868465221373665351,
                 748552378504052878 # pandey
             ],
-            application_id=application_id
+            application_id='919149033820418059'
         )
         self.add_check(self.blacklisted_check)
     
