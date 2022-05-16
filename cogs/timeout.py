@@ -1,7 +1,6 @@
 import inspect
 import asyncio
 import datetime
-from re import S
 import discord
 from discord.ext import commands
 
