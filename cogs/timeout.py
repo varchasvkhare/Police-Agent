@@ -19,8 +19,8 @@ class Timeout(commands.Cog):
         #log_channel = discord.utils.get(ctx.guild.channels, id=970211808830967879)
         time_convert = {"s":1, "m":60, "h":3600,"d":86400}
         duration= int(time[0]) * time_convert[time[-1]]
-        until = datetime.datetime(seconds=duration)
-        epoch = calendar.timegm(until.timetuple())
+        until = datetime.timedelta(seconds=duration).total_seconds()
+        epoch = calendar.timegm(until)
         embed = discord.Embed(
             title="Timeout",
             description = inspect.cleandoc(
