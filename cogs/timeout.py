@@ -13,7 +13,7 @@ class Timeout(commands.Cog):
         aliases = ['to']
     )
     @commands.has_permissions(moderate_members=True)
-    async def timeout(self, ctx: commands.Context, member: discord.Member, time, *, reason=None) -> None:
+    async def timeout(self, ctx: commands.Context, member: discord.Member, time=None, *, reason=None) -> None:
         """Timeout a user"""
         #log_channel = discord.utils.get(ctx.guild.channels, id=970211808830967879)
         time_convert = {"s":1, "m":60, "h":3600,"d":86400}
