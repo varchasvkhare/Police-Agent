@@ -13,7 +13,7 @@ class Timeout(commands.Cog):
         aliases = ['to']
     )
     @commands.has_permissions(moderate_members=True)
-    async def timeout(self, ctx: commands.Context, member: discord.Member, time=None, *, reason=None) -> None:
+    async def timeout(self, ctx: commands.Context, member: discord.Member, time, *, reason=None) -> None:
         """Timeout a user"""
         #log_channel = discord.utils.get(ctx.guild.channels, id=970211808830967879)
         time_convert = {"s":1, "m":60, "h":3600,"d":86400}
@@ -33,11 +33,15 @@ class Timeout(commands.Cog):
         )
         embed.set_footer(text=f"ID: {member.id}")
         check_if = member.is_timed_out()
-        if check_if == False:
-            await member.timeout(until, reason=reason)
-            await ctx.send(embed=embed)
+        if time == None:
+            a = datetime.timedelta(seconds=0)
+            await member.timeout(a)
         else:
-            await ctx.send("That user is already timed out. Too bad for them")
+            if check_if == False:
+                await member.timeout(until, reason=reason)
+                await ctx.send(embed=embed)
+            elif check_if == True:
+                await ctx.send("That user is already timed out. Too bad for them")
 
         
 async def setup(bot):
