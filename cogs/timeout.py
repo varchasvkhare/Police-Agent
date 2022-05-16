@@ -24,7 +24,7 @@ class Timeout(commands.Cog):
             description = inspect.cleandoc(
                 f"""
                 **Offender:** {member.name}#{member.discriminator}
-                **Duration** {time}s
+                **Duration** {time}
                 **Reason:** {reason}
                 **Responsible moderator:** {ctx.author.name}#{ctx.author.discriminator}
                 """
@@ -32,8 +32,12 @@ class Timeout(commands.Cog):
             color=0xff8b8b
         )
         embed.set_footer(text=f"ID: {member.id}")
-        await member.timeout(until, reason=reason)
-        await ctx.send(embed=embed)
+        check_if = member.is_timed_out()
+        if check_if == False:
+            await member.timeout(until, reason=reason)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("That user is already timed out. Too bad for them")
 
         
 async def setup(bot):
