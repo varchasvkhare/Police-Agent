@@ -1,6 +1,7 @@
 import inspect
 import asyncio
 import datetime
+import calendar
 import discord
 from discord.ext import commands
 
@@ -18,13 +19,14 @@ class Timeout(commands.Cog):
         #log_channel = discord.utils.get(ctx.guild.channels, id=970211808830967879)
         time_convert = {"s":1, "m":60, "h":3600,"d":86400}
         duration= int(time[0]) * time_convert[time[-1]]
-        until = datetime.timedelta(seconds=duration)
+        until = datetime.datetime(seconds=duration)
+        epoch = calendar.timegm(until.timetuple())
         embed = discord.Embed(
             title="Timeout",
             description = inspect.cleandoc(
                 f"""
                 **Offender:** {member.name}#{member.discriminator}
-                **Duration** {until}
+                **Duration** {time} <t:epoch>
                 **Reason:** {reason}
                 **Responsible moderator:** {ctx.author.name}#{ctx.author.discriminator}
                 """
