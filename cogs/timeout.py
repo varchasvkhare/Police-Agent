@@ -34,7 +34,7 @@ class Timeout(commands.Cog):
             description = inspect.cleandoc(
                 f"""
                 **Offender:** {member.name}#{member.discriminator}
-                **Duration** {time} <t:{round(epoch)}>
+                **Duration** {time} <t:{round(epoch+duration)}>
                 **Reason:** {reason}
                 **Responsible moderator:** {ctx.author.name}#{ctx.author.discriminator}
                 """
