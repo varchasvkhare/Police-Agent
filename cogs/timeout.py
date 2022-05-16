@@ -18,6 +18,7 @@ class Timeout(commands.Cog):
         #log_channel = discord.utils.get(ctx.guild.channels, id=970211808830967879)
         time_convert = {"s":1, "m":60, "h":3600,"d":86400}
         duration= int(time[0]) * time_convert[time[-1]]
+        until = datetime.timedelta(seconds=duration)
         embed = discord.Embed(
             title="Timeout",
             description = inspect.cleandoc(
@@ -31,7 +32,7 @@ class Timeout(commands.Cog):
             color=0xff8b8b
         )
         embed.set_footer(text=f"ID: {member.id}")
-        await member.timeout(until = datetime.timedelta(seconds=duration))
+        await member.timeout(until = until)
 
         
 async def setup(bot):
