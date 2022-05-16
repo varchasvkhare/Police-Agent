@@ -33,6 +33,7 @@ class Timeout(commands.Cog):
         )
         embed.set_footer(text=f"ID: {member.id}")
         await member.timeout(until = until)
+        await ctx.send(embed=embed)
 
         
 async def setup(bot):
