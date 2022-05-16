@@ -12,7 +12,7 @@ class Timeout(commands.Cog):
         name="timeout",
         aliases = ['to']
     )
-    @commands. has_permissions(kick_members=True)
+    @commands.has_permissions(moderate_members=True)
     async def timeout(self, ctx: commands.Context, member: discord.Member, time, *, reason=None) -> None:
         """Timeout a user"""
         #log_channel = discord.utils.get(ctx.guild.channels, id=970211808830967879)
@@ -32,7 +32,7 @@ class Timeout(commands.Cog):
             color=0xff8b8b
         )
         embed.set_footer(text=f"ID: {member.id}")
-        await member.timeout(until)
+        await member.timeout(until, reason=reason)
         await ctx.send(embed=embed)
 
         
