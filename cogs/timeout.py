@@ -20,12 +20,12 @@ class Timeout(commands.Cog):
         time_convert = {"s":1, "m":60, "h":3600,"d":86400}
         duration= int(time[0]) * time_convert[time[-1]]
         
-        year = datetime.datetime.now().year()
-        month = datetime.datetime.now().month()
-        day = datetime.datetime.now().day()
-        hour = datetime.datetime.now().hour()
-        minute = datetime.datetime.now().minute()
-        second = datetime.datetime.now().second()
+        year = datetime.datetime.now().year
+        month = datetime.datetime.now().month
+        day = datetime.datetime.now().day
+        hour = datetime.datetime.now().hour
+        minute = datetime.datetime.now().minute
+        second = datetime.datetime.now().second
         
         until = datetime.timedelta(seconds=duration)
         epoch = datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute, second=second).timestamp()
