@@ -32,7 +32,7 @@ class Timeout(commands.Cog):
             color=0xff8b8b
         )
         embed.set_footer(text=f"ID: {member.id}")
-        await member.timeout(until = until)
+        await member.timeout(until)
         await ctx.send(embed=embed)
 
         
