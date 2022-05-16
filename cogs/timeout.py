@@ -20,13 +20,12 @@ class Timeout(commands.Cog):
         time_convert = {"s":1, "m":60, "h":3600,"d":86400}
         duration= int(time[0]) * time_convert[time[-1]]
         until = datetime.timedelta(seconds=duration).total_seconds()
-        epoch = calendar.timegm(until)
         embed = discord.Embed(
             title="Timeout",
             description = inspect.cleandoc(
                 f"""
                 **Offender:** {member.name}#{member.discriminator}
-                **Duration** {time} <t:epoch>
+                **Duration** {time} <t:{until}>
                 **Reason:** {reason}
                 **Responsible moderator:** {ctx.author.name}#{ctx.author.discriminator}
                 """
