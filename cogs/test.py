@@ -125,8 +125,8 @@ class Connect4Game(Connect4Engine):
 
     def get_embed(self, custom_footer=False):
         title = (
-            f'Connect 4: {self.player1.display_name} ({self.tokens[1]}) '
-            f'VS {self.player2.display_name} ({self.tokens[2]})'
+            f'Connect 4: {self.player1.name} ({self.tokens[1]}) '
+            f'VS {self.player2.name} ({self.tokens[2]})'
         )
         c = self.last_column
         content = (FILLER*(c-1) + LAST_COLUMN_INDICATOR + (FILLER*(7-c)) + '\n') if c else ''
@@ -146,7 +146,7 @@ class Connect4Game(Connect4Engine):
             e.set_footer(text=custom_footer)
         else:
             token = self.tokens[1] if self.next_up == self.player1 else self.tokens[2]
-            e.set_footer(text=f'Next Up: {self.next_up.display_name} ({token})')
+            e.set_footer(text=f'Current turn - {self.next_up.name} ({token})')
 
         return e
 
