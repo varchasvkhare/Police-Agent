@@ -367,7 +367,7 @@ class Bot(commands.AutoShardedBot):
             'jishaku',
             *[
                 f'cogs.{extension[:-3]}'
-                for extension in os.listdir('./cogs/normal')
+                for extension in os.listdir('./cogs')
                 if extension.endswith('.py')
             ]
         ]
