@@ -1,4 +1,5 @@
 from ast import mod
+import logging
 import random
 import os
 from re import sub
@@ -412,4 +413,4 @@ intents = discord.Intents.all()
 
 if __name__ == '__main__':
     bot = Bot(intents=intents, application_id=919149033820418059)
-    bot.run()
+    bot.run(token=BOT_TOKEN)
