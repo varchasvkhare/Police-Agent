@@ -18,7 +18,7 @@ class Time(commands.Cog):
         
         year = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).year
         month = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).month
-        day = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).day
+        day = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).days
         hour = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).hour
         minute = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).minute
         second = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).second
