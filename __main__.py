@@ -407,8 +407,8 @@ class Bot(commands.AutoShardedBot):
         
     async def start(self):
         await super().start(
-            token=BOT_TOKEN,
-            reconnect=True
+            token=BOT_TOKEN
+            #reconnect=True
         )
 intents = discord.Intents.all()
 
