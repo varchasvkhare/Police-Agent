@@ -408,10 +408,10 @@ class Bot(commands.AutoShardedBot):
     async def start(self):
         await super().start(
             token=BOT_TOKEN
-            #reconnect=True
+            reconnect=True
         )
 intents = discord.Intents.all()
 
 if __name__ == '__main__':
     bot = Bot(intents=intents, application_id=919149033820418059)
-    bot.run(BOT_TOKEN)
+    bot.run(BOT_TOKEN, reconnect=True)
