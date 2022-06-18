@@ -3,6 +3,7 @@ import asyncio
 import datetime
 import calendar
 import discord
+import pytz
 from discord.ext import commands
 
 class Time(commands.Cog):
@@ -15,15 +16,23 @@ class Time(commands.Cog):
     async def timeout(self, ctx: commands.Context) -> None:
         """Check the time"""
         
-        year = datetime.datetime.now().year
-        month = datetime.datetime.now().month
-        day = datetime.datetime.now().day
-        hour = datetime.datetime.now().hour
-        minute = datetime.datetime.now().minute
-        second = datetime.datetime.now().second
+        year = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).year
+        month = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).month
+        day = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).day
+        hour = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).hour
+        minute = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).minute
+        second = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata')).second
         
         epoch = datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute, second=second).timestamp()
-        await ctx.send(f"<t:{round(epoch)}>\n{day}-{month}-{year} {hour}:{minute}:{second}")
+        await ctx.reply(
+            inspect.cleandoc(
+                f"""
+                Bot's current timezone is **IST.**
+                The current time is: **{hour}:{minute}:{second}** {day}-{month}-{year} **IST (UTC+05:30)**
+                <t:{round(epoch)}>
+                """
+            )
+        )
 
         
 async def setup(bot):
