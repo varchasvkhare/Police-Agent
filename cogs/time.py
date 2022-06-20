@@ -28,7 +28,7 @@ class Time(commands.Cog):
             inspect.cleandoc(
                 f"""
                 Bot's current timezone is **IST.**
-                The current time is: **{hour}:{minute}:{second}** {day}-{month}-{year} **IST (UTC+05:30)**
+                The current time is: **{hour}:{minute}:{second}** {day}-{month}-{year} *Asia/Kolkata (UTC+05:30)**
                 <t:{round(epoch)}>
                 """
             )
