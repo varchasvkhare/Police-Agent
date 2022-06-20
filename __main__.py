@@ -405,8 +405,8 @@ class Bot(commands.AutoShardedBot):
         self.add_view(TicketClose())
         self.add_view(SelfRoles())
         
-    async def start(self):
-        await super().start(
+    def run(self):
+        super().run(
             token=BOT_TOKEN,
             reconnect=True
         )
