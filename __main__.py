@@ -14,7 +14,7 @@ from discord import app_commands
 from discord.ext import commands, tasks
 import asyncpg
 
-BOT_TOKEN = 'OTE5MTQ5MDMzODIwNDE4MDU5.YbRmPg.rJRCJeOAicRK6vtvbs2jq43tmZA'
+BOT_TOKEN = 'OTE5MTQ5MDMzODIwNDE4MDU5.GiiFai.ZBhJDiR0NeJj1fhcVuONL_-b4zwHx0MjxUmoIs'
 POSTGRES_DSN = 'postgres://lhjqkocefjmnmu:92530a413343e2a308556d0b2c76a72596a44640b3767c72cd53cc4eef8df956@ec2-3-224-125-117.compute-1.amazonaws.com:5432/d4teouam269f5t'
 
 async def _prefix_callable(bot: commands.AutoShardedBot, message: discord.Message):
